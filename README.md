@@ -8,6 +8,15 @@ Typically this would go into the CI process as a post-build step.
 
     generate-build-info --file ./public/build-info.json --sha  a3cb219c --build "v1.2.32.0" --comment "Release to Test" --author "spenceclark"
 
+An example of using this as part of CI process, I use this inside my dockerfile which is being built using GitLab CI:
+
+    # Build
+    RUN yarn run build
+
+    # Generate build info file
+    RUN generate-build-info --file ./build/build-info.json --sha $CI_COMMIT_SHORT_SHA --build $CI_COMMIT_TAG
+
+
 Parameters are:
 
 - **file** - The output filename - if not supplied it default to "build-info.json" in current directory
