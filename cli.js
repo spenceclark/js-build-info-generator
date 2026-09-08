@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
 // Use YARGS to parse command line
-const argv = require('yargs')
-    .command('', 'Generates a Build Info JSON file')
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
+
+const argv = yargs(hideBin(process.argv))
+    .command('$0', 'Generates a Build Info JSON file')
     .option('file', {
         type: 'string',
         description: 'Filename to write to',
@@ -26,8 +29,8 @@ const argv = require('yargs')
   .argv;
 
 // Use file & path libraries
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 // Get the output file name
 var fileName = argv.file;
@@ -44,7 +47,7 @@ var info = {
 }
 
 // Get full filename
-filename = path.resolve(path.join(process.cwd(), fileName));
+var filename = path.resolve(path.join(process.cwd(), fileName));
 
 // Write to file
 fs.writeFile(filename, JSON.stringify(info, null, 2), function(err) {

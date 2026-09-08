@@ -4,8 +4,9 @@
   "description": "Generate a Build Info JSON file as part of build process",
   "repository": "https://github.com/spenceclark/js-build-info-generator",
   "main": "cli.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "bin": {
     "generate-build-info": "./cli.js"
@@ -22,6 +23,6 @@
   "author": "spenceclark@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "yargs": "^14.2.0"
+    "yargs": "^18.1.0"
   }
 }
